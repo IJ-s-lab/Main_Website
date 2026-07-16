@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAKSHYNiTi — From India, For India’s Future</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Brand Colors from brandkit.png
+                        'off-white': '#F6F8FD',
+                        'soft-bg': '#EDEFF0',
+                        'warm-gray': '#DFE2E7',
+                        'mid-gray': '#9BA3A8',
+                        'dark-text': '#0D1120',
+                        'deep-navy': '#1A339A',
+                        'brand-blue': '#2D71B9',
+                        'soft-blue': '#89B9F0',
+                        'light-blue': '#C2DEF8',
+                        'accent-blue': '#4192E9',
+                    },
+                    fontFamily: {
+                        'heading': ['Rajdhani', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F6F8FD;
+            color: #0D1120;
+            line-height: 1.6;
+        }
+
+        .font-heading { font-family: 'Rajdhani', sans-serif; }
+
+        /* Cards */
+        .brand-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(223, 226, 231, 0.8);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .brand-card:hover {
+            border-color: rgba(45, 113, 185, 0.3);
+            box-shadow: 0 8px 32px rgba(26, 51, 154, 0.08);
+            transform: translateY(-2px);
+        }
+
+        /* Dark cards for immersive sections */
+        .dark-card {
+            background: rgba(13, 17, 32, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(45, 113, 185, 0.2);
+            border-radius: 12px;
+        }
+
+        /* Section Label */
+        .section-label {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #2D71B9;
+        }
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: currentColor;
+            opacity: 0.3;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #1A339A 0%, #2D71B9 100%);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(26, 51, 154, 0.3);
+        }
+        .btn-secondary {
+            border: 1px solid rgba(26, 51, 154, 0.4);
+            color: #1A339A;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: rgba(26, 51, 154, 0.05);
+            border-color: #1A339A;
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Terminal Text */
+        .terminal-text {
+            font-family: 'Rajdhani', monospace;
+            color: #89B9F0;
+        }
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.1em;
+            background: #89B9F0;
+            margin-left: 2px;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Network Nodes */
+        .network-node {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #1A339A;
+            box-shadow: 0 0 12px rgba(26, 51, 154, 0.5);
+        }
+
+        /* 3D Image Container */
+        .hero-3d-container {
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+        .hero-3d-container:hover {
+            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+        }
+        .hero-3d-image {
+            border-radius: 20px;
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.3),
+                0 0 60px rgba(45, 113, 185, 0.15);
+        }
+
+        /* CRT Effect (Hero only) */
+        .crt-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(137, 185, 240, 0.02) 2px,
+                rgba(137, 185, 240, 0.02) 4px
+            );
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-6 lg:px-12 py-4 bg-off-white/90 backdrop-blur-md border-b border-warm-gray/50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="favicon_io/favicon.ico" alt="LAKSHYNiTi" class="w-10 h-10">
+                <div>
+                    <span class="font-heading font-bold text-xl text-dark-text tracking-wide">Let's Work Together</span>
+                    <span class="hidden sm:inline-block text-xs text-mid-gray ml-3 tracking-wider uppercase border-l border-mid-gray/30 pl-3">From India, For India’s Future.</span>
+                </div>
+            </a>
+            <a href="#cta" class="btn-primary px-6 py-2.5 rounded-lg font-heading font-semibold text-sm tracking-wider">Get Early Access</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Dark - Immersive) -->
+    <section class="min-h-screen flex items-center justify-center relative px-6 lg:px-12 pt-24 pb-16 overflow-hidden bg-dark-text">
+        <!-- Background Glow -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-blue/20 rounded-full blur-[150px] pointer-events-none"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-deep-navy/30 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
+            <!-- Left Content -->
+            <div class="reveal">
+                <div class="section-label text-soft-blue mb-6 justify-start">
+                    <span>AI-Powered Execution Platform</span>
+                </div>
+                <h1 class="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-6 text-white">
+                    Learn by doing <span class="text-mid-gray/60">real work.</span><br>
+                    Build your <span class="text-soft-blue">career-ready future.</span>
+                </h1>
+                <p class="hidden text-mid-gray/80 text-base lg:text-lg max-w-lg mb-8 leading-relaxed">
+                    LAKSHYNiTi is an AI-first ecosystem where systems don’t wait for commands, they understand intent and execute outcomes. No tools to manage. No workflows to follow. Just direction, intelligence, and execution.
+                </p>
+                <p class="text-mid-gray/80 text-base lg:text-lg max-w-lg mb-8 leading-relaxed">
+                    Let's Work Together (LWT) bridges education and industry through real-world project execution, collaborative teamwork, and professional workflows.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#cta" class="btn-primary px-8 py-4 rounded-lg font-heading font-semibold text-sm tracking-wider flex items-center gap-2">
+                        Get Early Access <span>→</span>
+                    </a>
+                    <a href="#about" class="border border-white/20 text-white px-8 py-4 rounded-lg font-heading font-semibold text-sm tracking-wider hover:bg-white/5 transition-all">
+                        Explore LWT
+                    </a>
+                </div>
+            </div>
+
+            <!-- LAKSHYOS hero image intentionally hidden; keep the asset and markup for later use.
+            <div class="reveal" style="transition-delay: 150ms;">
+                <div class="hero-3d-container" id="hero3d">
+                    <img
+                        src="LAKSHYOS_V1_forwebsite.png"
+                        alt="LAKSHYOS 3D AI Interface"
+                        class="hero-3d-image w-full h-auto max-w-xl mx-auto"
+                        style="filter: drop-shadow(0 25px 50px rgba(26, 51, 154, 0.3));"
+                    >
+                </div>
+            </div>
+            -->
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="py-24 px-6 lg:px-12 bg-off-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <div class="section-label mb-4 justify-center">
+                    <span>What is LWT</span>
+                </div>
+                <h2 class="font-heading font-bold text-3xl lg:text-5xl text-dark-text mb-6">
+                    Professional experience, before your first job
+                </h2>
+                <p class="text-mid-gray text-lg max-w-2xl mx-auto">
+                    LWT is an AI-powered professional execution platform that helps users learn through real-world projects, guided collaboration, and industry-inspired workflows.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="brand-card p-8 reveal">
+                    <div class="w-12 h-12 rounded-xl bg-deep-navy/10 flex items-center justify-center text-deep-navy text-xl font-heading font-bold mb-6">◈</div>
+                    <h3 class="font-heading font-bold text-xl text-dark-text mb-2">Real Projects</h3>
+                    <p class="text-mid-gray text-sm mb-1">Learn through</p>
+                    <p class="font-heading font-semibold text-brand-blue text-lg">execution</p>
+                </div>
+                <div class="brand-card p-8 reveal" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-blue text-xl font-heading font-bold mb-6">⚡</div>
+                    <h3 class="font-heading font-bold text-xl text-dark-text mb-2">AI Guidance</h3>
+                    <p class="text-mid-gray text-sm mb-1">Build with</p>
+                    <p class="font-heading font-semibold text-brand-blue text-lg">confidence</p>
+                </div>
+                <div class="brand-card p-8 reveal" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 rounded-xl bg-accent-blue/10 flex items-center justify-center text-accent-blue text-xl font-heading font-bold mb-6">◉</div>
+                    <h3 class="font-heading font-bold text-xl text-dark-text mb-2">Professional Portfolios</h3>
+                    <p class="text-mid-gray text-sm mb-1">Show what</p>
+                    <p class="font-heading font-semibold text-brand-blue text-lg">you can do</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-16 reveal">
+                <p class="font-heading text-xl text-dark-text italic max-w-2xl mx-auto">
+                    Build the skills, experience, and portfolio that modern careers demand.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAKSHYOS + TYSON section intentionally hidden; keep this markup for later use. -->
+    <template id="lakshyos-section">
+    <section id="system" class="py-24 px-6 lg:px-12 bg-dark-text relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-blue/5 to-transparent pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-16 reveal">
+                <div class="section-label text-soft-blue mb-4 justify-center">
+                    <span>The Core System</span>
+                </div>
+                <h2 class="font-heading font-bold text-3xl lg:text-5xl text-white mb-6">
+                    LAKSHYOS + TYSON
+                </h2>
+                <p class="text-mid-gray/80 text-lg max-w-2xl mx-auto">
+                    An AI Operating System with an embedded Operator. Environment and execution, unified into a single intelligent system.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 items-start">
+                <!-- Left: Terminal -->
+                <div class="reveal">
+                    <div class="dark-card p-8">
+                        <div class="terminal-text space-y-4 text-sm">
+                            <div class="flex items-center gap-2 text-accent-blue">
+                                <span>$</span>
+                                <span>tyson.execute --build landing-page</span>
+                            </div>
+                            <div class="pl-4 border-l-2 border-brand-blue/30 space-y-3">
+                                <div class="text-white/90">
+                                    <span class="text-soft-blue">></span> Build SaaS landing page
+                                </div>
+                                <div class="text-mid-gray/70 tyson-step opacity-0">→ Researching design patterns...</div>
+                                <div class="text-mid-gray/70 tyson-step opacity-0">→ Generating components...</div>
+                                <div class="text-mid-gray/70 tyson-step opacity-0">→ Optimizing for production...</div>
+                                <div class="text-soft-blue opacity-0 flex items-center gap-2" id="tysonComplete">
+                                    <span>✓</span> Deployed to production
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 mt-4">
+                                <span class="text-brand-blue/60">$</span>
+                                <span class="cursor"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Features -->
+                <div class="space-y-6 reveal" style="transition-delay: 150ms;">
+                    <div class="dark-card p-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-deep-navy/30 flex items-center justify-center text-soft-blue font-heading font-bold flex-shrink-0">L</div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-white mb-2">Conversational Setup</h4>
+                                <p class="text-mid-gray/70 text-sm">No configuration screens. Tell the system what you need in natural language.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dark-card p-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-deep-navy/30 flex items-center justify-center text-soft-blue font-heading font-bold flex-shrink-0">T</div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-white mb-2">Autonomous Execution</h4>
+                                <p class="text-mid-gray/70 text-sm">Define goals, not steps. TYSON coordinates multiple agents to deliver outcomes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dark-card p-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-deep-navy/30 flex items-center justify-center text-soft-blue font-heading font-bold flex-shrink-0">+</div>
+                            <div>
+                                <h4 class="font-heading font-semibold text-white mb-2">Adaptive Learning</h4>
+                                <p class="text-mid-gray/70 text-sm">The system learns your patterns and evolves its interface to match your workflow.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 reveal">
+                <p class="font-heading text-xl text-soft-blue italic">
+                    You don’t learn the system. The system learns you.
+                </p>
+            </div>
+        </div>
+    </section>
+    </template>
+
+    <!-- YugBartiq (Light) intentionally hidden; retain this markup for future use.
+    <section id="yugbartiq" class="py-24 px-6 lg:px-12 bg-off-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <div class="section-label mb-4 justify-start">
+                        <span>P2P Network</span>
+                    </div>
+                    <h2 class="font-heading font-bold text-4xl lg:text-5xl text-dark-text mb-4">YugBartiq</h2>
+                    <p class="text-mid-gray text-lg mb-8">Communication without intermediaries.</p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center gap-3 text-mid-gray">
+                            <div class="w-6 h-6 rounded-full bg-deep-navy/10 flex items-center justify-center text-deep-navy text-xs">◉</div>
+                            <span>Direct device-to-device communication</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-mid-gray">
+                            <div class="w-6 h-6 rounded-full bg-deep-navy/10 flex items-center justify-center text-deep-navy text-xs">◉</div>
+                            <span>No central servers, no data ownership issues</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-mid-gray">
+                            <div class="w-6 h-6 rounded-full bg-deep-navy/10 flex items-center justify-center text-deep-navy text-xs">◉</div>
+                            <span>Secure by architecture, not just encryption</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-mid-gray">
+                            <div class="w-6 h-6 rounded-full bg-deep-navy/10 flex items-center justify-center text-deep-navy text-xs">◉</div>
+                            <span>Works even in low-connectivity environments</span>
+                        </div>
+                    </div>
+
+                    <p class="font-heading text-lg text-deep-navy italic">
+                        Your communication should belong to you. Not to platforms.
+                    </p>
+                </div>
+
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <div class="relative h-80">
+                        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 320">
+                            <line x1="100" y1="80" x2="200" y2="120" stroke="#1A339A" stroke-width="1" opacity="0.2"/>
+                            <line x1="300" y1="80" x2="200" y2="120" stroke="#1A339A" stroke-width="1" opacity="0.2"/>
+                            <line x1="200" y1="120" x2="200" y2="200" stroke="#1A339A" stroke-width="1" opacity="0.2"/>
+                            <line x1="200" y1="200" x2="100" y2="280" stroke="#1A339A" stroke-width="1" opacity="0.2"/>
+                            <line x1="200" y1="200" x2="300" y2="280" stroke="#1A339A" stroke-width="1" opacity="0.2"/>
+                        </svg>
+                        <div class="absolute top-16 left-24 network-node"></div>
+                        <div class="absolute top-16 right-24 network-node" style="animation-delay: 0.5s;"></div>
+                        <div class="absolute top-32 left-1/2 -translate-x-1/2 network-node" style="animation-delay: 1s; background: #2D71B9;"></div>
+                        <div class="absolute top-56 left-1/2 -translate-x-1/2 network-node" style="animation-delay: 1.5s;"></div>
+                        <div class="absolute bottom-16 left-24 network-node" style="animation-delay: 2s;"></div>
+                        <div class="absolute bottom-16 right-24 network-node" style="animation-delay: 2.5s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- Ecosystem (Soft) -->
+    <section id="ecosystem" class="py-24 px-6 lg:px-12 bg-soft-bg">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <div class="section-label mb-4 justify-center">
+                    <span>The LWT Experience</span>
+                </div>
+                <h2 class="font-heading font-bold text-3xl lg:text-5xl text-dark-text mb-6">Learn. Collaborate. Deliver.</h2>
+                <p class="text-mid-gray text-lg max-w-2xl mx-auto">Immersive, guided environments designed around how modern products are actually built.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <!-- LAKSHYOS + TYSON ecosystem card intentionally hidden; keep this markup for later use.
+                <div class="brand-card p-8 reveal border-t-4 border-t-deep-navy">
+                    <div class="w-14 h-14 rounded-xl bg-deep-navy/10 flex items-center justify-center text-deep-navy text-2xl font-heading font-bold mb-6">L+T</div>
+                    <h3 class="font-heading font-bold text-2xl text-deep-navy mb-3">LAKSHYOS + TYSON</h3>
+                    <p class="text-mid-gray text-sm leading-relaxed">AI Operating System with autonomous execution. The intelligent environment that learns and acts.</p>
+                </div>
+                -->
+                <!-- YugBartiq ecosystem card intentionally hidden; retain this markup for future use.
+                <div class="brand-card p-8 reveal border-t-4 border-t-brand-blue" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-blue text-2xl font-heading font-bold mb-6">Y</div>
+                    <h3 class="font-heading font-bold text-2xl text-brand-blue mb-3">YugBartiq</h3>
+                    <p class="text-mid-gray text-sm leading-relaxed">Peer-to-peer communication layer. Connects people without intermediaries or centralized control.</p>
+                </div>
+                -->
+                <div class="brand-card p-8 reveal border-t-4 border-t-accent-blue" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 rounded-xl bg-accent-blue/10 flex items-center justify-center text-accent-blue text-2xl font-heading font-bold mb-6">◈</div>
+                    <h3 class="font-heading font-bold text-2xl text-accent-blue mb-3">Industry Ready</h3>
+                    <p class="text-mid-gray text-sm leading-relaxed">Create portfolios that reflect real professional work and the skills employers value.</p>
+                </div>
+            </div>
+
+            <div class="text-center reveal">
+                <p class="font-heading text-xl text-dark-text italic">Turn learning into meaningful, professional experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why It Matters (Light) -->
+    <section id="why" class="py-24 px-6 lg:px-12 bg-off-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <div class="section-label mb-4 justify-center">
+                    <span>Why It Matters Now</span>
+                </div>
+                <h2 class="font-heading font-bold text-3xl lg:text-5xl text-dark-text">The choice we face</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="brand-card p-8 border-l-4 border-l-red-400 reveal">
+                    <h3 class="font-heading font-bold text-xl text-red-500 mb-6 flex items-center gap-2">
+                        <span>⚠</span> The Current Path
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-mid-gray">
+                            <span class="text-red-400">×</span>
+                            <span>Tools are becoming complex</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-mid-gray">
+                            <span class="text-red-400">×</span>
+                            <span>Data is becoming controlled</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-mid-gray">
+                            <span class="text-red-400">×</span>
+                            <span>Users are becoming dependent</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="brand-card p-8 border-l-4 border-l-deep-navy reveal" style="transition-delay: 100ms;">
+                    <h3 class="font-heading font-bold text-xl text-deep-navy mb-6 flex items-center gap-2">
+                        <span>✓</span> The LAKSHYNiTi Path
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-mid-gray">
+                            <span class="text-deep-navy">✓</span>
+                            <span>Simplicity through intelligence</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-mid-gray">
+                            <span class="text-deep-navy">✓</span>
+                            <span>Freedom through decentralization</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-mid-gray">
+                            <span class="text-deep-navy">✓</span>
+                            <span>Power through automation</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA (Dark) -->
+    <section id="cta" class="py-32 px-6 lg:px-12 bg-dark-text relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-blue/5 to-transparent pointer-events-none"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-deep-navy/20 rounded-full blur-[150px] pointer-events-none"></div>
+
+        <div class="max-w-3xl mx-auto text-center relative z-10 reveal">
+            <h2 class="font-heading font-bold text-4xl lg:text-6xl text-white mb-6">Let's Work Together</h2>
+            <p class="text-mid-gray/80 text-lg mb-10">Build practical experience, strengthen your professional skills, and create work you are proud to show.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#" onclick="showSignup(); return false;" class="btn-primary px-10 py-4 rounded-lg font-heading font-semibold text-sm tracking-wider">Join Early Access</a>
+                <a href="https://letsworktogether.lakshyniti.com" class="btn-secondary px-10 py-4 rounded-lg font-heading font-semibold text-sm tracking-wider text-white border-white/20 hover:bg-white/5">Partner With Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Light) -->
+    <footer class="py-12 px-6 lg:px-12 bg-off-white border-t border-warm-gray/50">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <img src="favicon_io/favicon.ico" alt="Let's Work Together" class="w-8 h-8">
+                <span class="font-heading font-bold text-lg text-dark-text">Let's Work Together</span>
+            </div>
+            <p class="font-heading text-mid-gray text-sm tracking-wide mb-2">AI-powered learning for modern careers.</p>
+            <p class="text-mid-gray/50 text-xs">© 2026 LAKSHYNiTi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for Scroll Reveal
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    if (entry.target.closest('#system')) animateTyson();
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // TYSON Animation
+        function animateTyson() {
+            const steps = document.querySelectorAll('.tyson-step');
+            steps.forEach((step, index) => {
+                setTimeout(() => {
+                    step.style.opacity = '1';
+                    step.style.transition = 'opacity 0.5s ease';
+                }, index * 600);
+            });
+            setTimeout(() => {
+                const complete = document.getElementById('tysonComplete');
+                if (complete) {
+                    complete.style.opacity = '1';
+                    complete.style.transition = 'opacity 0.5s ease';
+                }
+            }, steps.length * 600 + 400);
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Signup
+        function showSignup() {
+            const email = prompt('Enter your email to join the early access list:');
+            if (email && email.includes('@')) {
+                alert('Thank you! We\'ll contact you at ' + email + ' soon.');
+            } else if (email) {
+                alert('Please enter a valid email address.');
+            }
+        }
+
+        // 3D Tilt Effect for Hero Image
+        const hero3d = document.getElementById('hero3d');
+        if (hero3d) {
+            document.addEventListener('mousemove', (e) => {
+                const rect = hero3d.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 30;
+                const rotateY = (centerX - x) / 30;
+
+                if (x > 0 && x < rect.width && y > 0 && y < rect.height) {
+                    hero3d.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+                } else {
+                    hero3d.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+                }
+            });
+
+            hero3d.addEventListener('mouseleave', () => {
+                hero3d.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+            });
+        }
+    </script>
+</body>
+</html>
