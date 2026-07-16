@@ -5,26 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LAKSHYNiTi — From India, For India’s Future</title>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
     <link rel="manifest" href="favicon_io/site.webmanifest">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        // Brand Colors from brandkit.png
                         'off-white': '#F6F8FD',
                         'soft-bg': '#EDEFF0',
                         'warm-gray': '#DFE2E7',
@@ -57,7 +53,6 @@
 
         .font-heading { font-family: 'Rajdhani', sans-serif; }
 
-        /* Cards */
         .brand-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
@@ -71,7 +66,6 @@
             transform: translateY(-2px);
         }
 
-        /* Dark cards for immersive sections */
         .dark-card {
             background: rgba(13, 17, 32, 0.85);
             backdrop-filter: blur(20px);
@@ -79,7 +73,6 @@
             border-radius: 12px;
         }
 
-        /* Section Label */
         .section-label {
             font-family: 'Rajdhani', sans-serif;
             font-weight: 600;
@@ -100,7 +93,6 @@
             opacity: 0.3;
         }
 
-        /* Buttons */
         .btn-primary {
             background: linear-gradient(135deg, #1A339A 0%, #2D71B9 100%);
             color: white;
@@ -121,7 +113,6 @@
             border-color: #1A339A;
         }
 
-        /* Scroll Reveal */
         .reveal {
             opacity: 0;
             transform: translateY(24px);
@@ -132,7 +123,6 @@
             transform: translateY(0);
         }
 
-        /* Terminal Text */
         .terminal-text {
             font-family: 'Rajdhani', monospace;
             color: #89B9F0;
@@ -147,7 +137,6 @@
         }
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* Network Nodes */
         .network-node {
             width: 10px;
             height: 10px;
@@ -156,7 +145,6 @@
             box-shadow: 0 0 12px rgba(26, 51, 154, 0.5);
         }
 
-        /* 3D Image Container */
         .hero-3d-container {
             position: relative;
             transform-style: preserve-3d;
@@ -172,7 +160,6 @@
                 0 0 60px rgba(45, 113, 185, 0.15);
         }
 
-        /* CRT Effect (Hero only) */
         .crt-overlay::before {
             content: '';
             position: absolute;
@@ -189,7 +176,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 px-6 lg:px-12 py-4 bg-off-white/90 backdrop-blur-md border-b border-warm-gray/50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="#" class="flex items-center gap-3 group">
@@ -203,14 +189,11 @@
         </div>
     </nav>
 
-    <!-- Hero Section (Dark - Immersive) -->
     <section class="min-h-screen flex items-center justify-center relative px-6 lg:px-12 pt-24 pb-16 overflow-hidden bg-dark-text">
-        <!-- Background Glow -->
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-blue/20 rounded-full blur-[150px] pointer-events-none"></div>
         <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-deep-navy/30 rounded-full blur-[120px] pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
-            <!-- Left Content -->
             <div class="reveal">
                 <div class="section-label text-soft-blue mb-6 justify-start">
                     <span>AI-First Ecosystem</span>
@@ -232,7 +215,6 @@
                 </div>
             </div>
 
-            <!-- Right Content - 3D Object -->
             <div class="reveal" style="transition-delay: 150ms;">
                 <div class="hero-3d-container" id="hero3d">
                     <img
@@ -246,7 +228,6 @@
         </div>
     </section>
 
-    <!-- What is LAKSHYNiTi (Light) -->
     <section id="about" class="py-24 px-6 lg:px-12 bg-off-white">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -290,7 +271,6 @@
         </div>
     </section>
 
-    <!-- LAKSHYOS + TYSON (Combined - Dark Section) -->
     <section id="system" class="py-24 px-6 lg:px-12 bg-dark-text relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-brand-blue/5 to-transparent pointer-events-none"></div>
 
@@ -308,7 +288,6 @@
             </div>
 
             <div class="grid lg:grid-cols-2 gap-8 items-start">
-                <!-- Left: Terminal -->
                 <div class="reveal">
                     <div class="dark-card p-8">
                         <div class="terminal-text space-y-4 text-sm">
@@ -335,7 +314,6 @@
                     </div>
                 </div>
 
-                <!-- Right: Features -->
                 <div class="space-y-6 reveal" style="transition-delay: 150ms;">
                     <div class="dark-card p-6">
                         <div class="flex items-start gap-4">
@@ -375,7 +353,6 @@
         </div>
     </section>
 
-    <!-- YugBartiq (Light) -->
     <section id="yugbartiq" class="py-24 px-6 lg:px-12 bg-off-white">
         <div class="max-w-6xl mx-auto">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -431,7 +408,6 @@
         </div>
     </section>
 
-    <!-- Ecosystem (Soft) -->
     <section id="ecosystem" class="py-24 px-6 lg:px-12 bg-soft-bg">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -466,7 +442,6 @@
         </div>
     </section>
 
-    <!-- Why It Matters (Light) -->
     <section id="why" class="py-24 px-6 lg:px-12 bg-off-white">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -520,7 +495,6 @@
         </div>
     </section>
 
-    <!-- Final CTA (Dark) -->
     <section id="cta" class="py-32 px-6 lg:px-12 bg-dark-text relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-brand-blue/5 to-transparent pointer-events-none"></div>
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-deep-navy/20 rounded-full blur-[150px] pointer-events-none"></div>
@@ -530,12 +504,11 @@
             <p class="text-mid-gray/80 text-lg mb-10">Be part of the shift from interaction to intelligence-driven systems.</p>
             <div class="flex flex-wrap justify-center gap-4">
                 <a href="#" onclick="showSignup(); return false;" class="btn-primary px-10 py-4 rounded-lg font-heading font-semibold text-sm tracking-wider">Join Early Access</a>
-                <a href="mailto:build@lakshyniti.com" class="btn-secondary px-10 py-4 rounded-lg font-heading font-semibold text-sm tracking-wider text-white border-white/20 hover:bg-white/5">Build With Us</a>
+                <a href="https://letsworktogether.lakshyniti.com" class="btn-secondary px-10 py-4 rounded-lg font-heading font-semibold text-sm tracking-wider text-white border-white/20 hover:bg-white/5" target="_blank" rel="noopener noreferrer">Let's Work Together</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer (Light) -->
     <footer class="py-12 px-6 lg:px-12 bg-off-white border-t border-warm-gray/50">
         <div class="max-w-6xl mx-auto text-center">
             <div class="flex items-center justify-center gap-3 mb-4">
@@ -548,7 +521,6 @@
     </footer>
 
     <script>
-        // Intersection Observer for Scroll Reveal
         const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -561,7 +533,6 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // TYSON Animation
         function animateTyson() {
             const steps = document.querySelectorAll('.tyson-step');
             steps.forEach((step, index) => {
@@ -579,7 +550,6 @@
             }, steps.length * 600 + 400);
         }
 
-        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -588,7 +558,6 @@
             });
         });
 
-        // Signup
         function showSignup() {
             const email = prompt('Enter your email to join the early access list:');
             if (email && email.includes('@')) {
@@ -598,7 +567,6 @@
             }
         }
 
-        // 3D Tilt Effect for Hero Image
         const hero3d = document.getElementById('hero3d');
         if (hero3d) {
             document.addEventListener('mousemove', (e) => {
