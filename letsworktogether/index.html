@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Let's Work Together — Professional Execution Portfolio</title>
+    <title>Let's Work Together — AI Project Waitlist</title>
     <link rel="icon" type="image/x-icon" href="../favicon_io/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
@@ -11,141 +11,202 @@
     <link rel="manifest" href="../favicon_io/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'off-white': '#F6F8FD',
-                        'soft-bg': '#EDEFF0',
-                        'warm-gray': '#DFE2E7',
-                        'mid-gray': '#9BA3A8',
-                        'dark-text': '#0D1120',
-                        'deep-navy': '#1A339A',
-                        'brand-blue': '#2D71B9',
-                        'soft-blue': '#89B9F0',
-                        'light-blue': '#C2DEF8',
-                        'accent-blue': '#4192E9',
+                        midnight: '#020513',
+                        ink: '#080D20',
+                        panel: '#0D152A',
+                        cyan: '#12D8C2',
+                        azure: '#047BFF',
+                        mist: '#AEB6C8',
+                        pearl: '#F0F4FF'
                     },
                     fontFamily: {
-                        'heading': ['Rajdhani', 'sans-serif'],
-                        'body': ['Inter', 'sans-serif'],
-                    },
+                        display: ['Cormorant Garamond', 'serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
                 }
             }
         }
     </script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: #F6F8FD; color: #0D1120; line-height: 1.6; }
-        .font-heading { font-family: 'Rajdhani', sans-serif; }
-        .brand-card { background: rgba(255,255,255,.72); backdrop-filter: blur(20px); border: 1px solid rgba(223,226,231,.8); border-radius: 12px; transition: all .3s ease; }
-        .brand-card:hover { border-color: rgba(45,113,185,.3); box-shadow: 0 8px 32px rgba(26,51,154,.08); transform: translateY(-2px); }
-        .dark-card { background: rgba(13,17,32,.86); backdrop-filter: blur(20px); border: 1px solid rgba(45,113,185,.2); border-radius: 12px; }
-        .section-label { font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; display: flex; align-items: center; gap: .75rem; color: #2D71B9; }
-        .section-label::before, .section-label::after { content: ''; width: 24px; height: 1px; background: currentColor; opacity: .3; }
-        .btn-primary { background: linear-gradient(135deg,#1A339A 0%,#2D71B9 100%); color: white; transition: all .3s ease; }
-        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(26,51,154,.3); }
-        .btn-secondary { border: 1px solid rgba(26,51,154,.4); color: #1A339A; background: transparent; transition: all .3s ease; }
-        .btn-secondary:hover { background: rgba(26,51,154,.05); border-color: #1A339A; }
-        .reveal { opacity: 0; transform: translateY(24px); transition: all .7s cubic-bezier(.4,0,.2,1); }
+        body {
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            color: #F0F4FF;
+            background:
+                radial-gradient(circle at 50% 2%, rgba(4, 123, 255, .18), transparent 26rem),
+                radial-gradient(circle at 84% 38%, rgba(18, 216, 194, .13), transparent 22rem),
+                #020513;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: linear-gradient(rgba(240, 244, 255, .025) 1px, transparent 1px), linear-gradient(90deg, rgba(240, 244, 255, .025) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: linear-gradient(to bottom, black, transparent 78%);
+        }
+        .font-display { font-family: 'Cormorant Garamond', serif; }
+        .glass-nav { background: rgba(2, 5, 19, .78); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(174, 182, 200, .14); }
+        .brand-pill { background: linear-gradient(135deg, #047BFF, #12D8C2); box-shadow: 0 12px 32px rgba(4, 123, 255, .25); }
+        .btn-primary { background: linear-gradient(135deg, #047BFF 0%, #12D8C2 100%); box-shadow: 0 18px 42px rgba(4, 123, 255, .28); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 54px rgba(18, 216, 194, .28); }
+        .btn-secondary { background: rgba(13, 21, 42, .76); border: 1px solid rgba(174, 182, 200, .12); }
+        .btn-secondary:hover, .feature-card:hover { border-color: rgba(18, 216, 194, .36); transform: translateY(-4px); }
+        .feature-card, .workspace-card, .waitlist-card {
+            background: linear-gradient(180deg, rgba(13, 21, 42, .86), rgba(8, 13, 32, .92));
+            border: 1px solid rgba(174, 182, 200, .1);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 24px 80px rgba(0,0,0,.22);
+        }
+        .text-gradient { background: linear-gradient(90deg, #047BFF, #12D8C2); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .reveal { opacity: 0; transform: translateY(24px); transition: .7s cubic-bezier(.4, 0, .2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .portfolio-tile { min-height: 220px; position: relative; overflow: hidden; }
-        .portfolio-tile::after { content: ''; position: absolute; inset: auto -20% -35% -20%; height: 120px; background: radial-gradient(circle, rgba(65,146,233,.24), transparent 70%); }
-        .metric { border-left: 1px solid rgba(137,185,240,.25); }
+        .icon-box { background: rgba(4, 123, 255, .12); color: #12D8C2; box-shadow: 0 0 36px rgba(4, 123, 255, .15); }
+        input, select, textarea { background: rgba(2, 5, 19, .72); border: 1px solid rgba(174, 182, 200, .18); color: #F0F4FF; outline: none; }
+        input:focus, select:focus, textarea:focus { border-color: rgba(18, 216, 194, .7); box-shadow: 0 0 0 4px rgba(18, 216, 194, .08); }
     </style>
 </head>
 <body>
-    <nav class="fixed top-0 left-0 right-0 z-50 px-6 lg:px-12 py-4 bg-off-white/90 backdrop-blur-md border-b border-warm-gray/50">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="../" class="flex items-center gap-3 group">
-                <img src="../lwt.png" alt="Let's Work Together" class="w-10 h-10">
-                <div>
-                    <span class="font-heading font-bold text-xl text-dark-text tracking-wide">Let's Work Together</span>
-                    <span class="hidden sm:inline-block text-xs text-mid-gray ml-3 tracking-wider uppercase border-l border-mid-gray/30 pl-3">Professional Execution Platform</span>
-                </div>
+    <nav class="fixed top-0 inset-x-0 z-50 glass-nav px-6 lg:px-12 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-6">
+            <a href="../" class="flex items-center gap-3">
+                <img src="../lwt.png" alt="Let's Work Together logo" class="h-10 w-auto">
+                <span class="hidden sm:block h-6 w-px bg-white/15"></span>
+                <span class="hidden sm:block text-sm font-bold uppercase tracking-wide">Let's Work Together</span>
             </a>
-            <a href="#join" class="btn-primary px-6 py-2.5 rounded-lg font-heading font-semibold text-sm tracking-wider">Join the Platform</a>
+            <div class="hidden md:flex items-center gap-9 text-sm text-mist">
+                <a href="#features" class="hover:text-white transition">Features</a>
+                <a href="#project" class="hover:text-white transition">Project</a>
+                <a href="#about" class="hover:text-white transition">About</a>
+            </div>
+            <a href="#waitlist" class="btn-primary rounded-full px-5 py-2.5 text-sm font-semibold transition">Get Early Access</a>
         </div>
     </nav>
 
-    <section class="min-h-screen flex items-center justify-center relative px-6 lg:px-12 pt-24 pb-16 overflow-hidden bg-dark-text">
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-blue/20 rounded-full blur-[150px] pointer-events-none"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-deep-navy/30 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
-            <div class="reveal">
-                <div class="section-label text-soft-blue mb-6 justify-start"><span>Portfolio-Building Execution</span></div>
-                <h1 class="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-6 text-white">
-                    Learn by building.<br>Prove it with a <span class="text-soft-blue">portfolio.</span>
+    <main>
+        <section class="relative min-h-screen px-6 pt-28 pb-20 lg:px-12 text-center overflow-hidden">
+            <div class="max-w-5xl mx-auto reveal">
+                <p class="mb-5 text-xs uppercase tracking-[.34em] text-cyan/80">Private waitlist now open</p>
+                <h1 class="font-display text-5xl sm:text-6xl lg:text-8xl font-bold leading-[.9] text-pearl">
+                    The AI-powered execution layer<br>
+                    <span class="text-gradient">between education and your first job</span>
                 </h1>
-                <p class="text-mid-gray/80 text-base lg:text-lg max-w-lg mb-8 leading-relaxed">
-                    Let's Work Together is the LAKSHYNiTi professional execution space where learners, creators, and early professionals collaborate on real-world projects with AI-guided workflows and portfolio-ready outcomes.
+                <p class="mt-8 mx-auto max-w-2xl text-lg leading-8 text-mist">
+                    LWT brings projects, AI mentors, team collaboration, and portfolio proof into one beautiful workspace. Explore the project vision, understand what is coming, and join the waitlist for early access.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#join" class="btn-primary px-8 py-4 rounded-lg font-heading font-semibold text-sm tracking-wider flex items-center gap-2">Join the Platform <span>→</span></a>
-                    <a href="#portfolio" class="border border-white/20 text-white px-8 py-4 rounded-lg font-heading font-semibold text-sm tracking-wider hover:bg-white/5 transition-all">View Portfolio Flow</a>
+                <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#waitlist" class="btn-primary rounded-full px-8 py-4 font-semibold transition w-full sm:w-auto">Join the Waiting List <span class="ml-2">→</span></a>
+                    <a href="#features" class="btn-secondary rounded-full px-8 py-4 font-semibold transition w-full sm:w-auto">Discover Features</a>
                 </div>
             </div>
-            <div class="reveal" style="transition-delay:150ms;">
-                <div class="dark-card p-6 lg:p-8">
-                    <div class="flex items-center gap-4 mb-8"><img src="../lwt.png" alt="LWT" class="w-16 h-16"><div><p class="text-soft-blue font-heading font-semibold tracking-[.2em] text-xs uppercase">Live Execution Board</p><h2 class="font-heading text-3xl text-white font-bold">LWT Portfolio OS</h2></div></div>
-                    <div class="space-y-4">
-                        <div class="brand-card bg-white/5 border-white/10 p-4"><p class="text-white font-heading font-semibold">01 · Choose an industry-style brief</p><p class="text-mid-gray/70 text-sm">Product, design, marketing, AI automation, research, or operations.</p></div>
-                        <div class="brand-card bg-white/5 border-white/10 p-4"><p class="text-white font-heading font-semibold">02 · Execute with a guided team</p><p class="text-mid-gray/70 text-sm">AI breaks the work into milestones, reviews, and proof-of-work assets.</p></div>
-                        <div class="brand-card bg-white/5 border-white/10 p-4"><p class="text-white font-heading font-semibold">03 · Publish your portfolio case study</p><p class="text-mid-gray/70 text-sm">Turn execution history into a credible, shareable professional story.</p></div>
+
+            <div id="project" class="workspace-card reveal mt-28 mx-auto max-w-md rounded-2xl p-3" style="transition-delay:120ms;">
+                <div class="rounded-xl border border-white/10 bg-midnight/80 px-8 py-7">
+                    <div class="icon-box mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl text-4xl">⌬</div>
+                    <h2 class="font-display text-3xl font-bold">Your Project Workspace</h2>
+                    <p class="mt-2 text-mist">Know every project detail before you join: goals, skills, mentors, milestones, and the portfolio outcome.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="px-6 lg:px-12 py-24">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center reveal mb-14">
+                    <p class="text-cyan uppercase tracking-[.3em] text-xs font-semibold mb-4">Everything in one place</p>
+                    <h2 class="font-display text-4xl sm:text-6xl font-bold leading-none">Everything you need to execute faster</h2>
+                    <p class="mt-5 text-mist max-w-2xl mx-auto">Replace scattered learning, tasks, and team chats with a single AI-guided operating system for project-based growth.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-7">
+                    <article class="feature-card reveal rounded-2xl p-8 transition">
+                        <div class="icon-box mb-7 flex h-12 w-12 items-center justify-center rounded-xl text-2xl">ϟ</div>
+                        <h3 class="font-display text-3xl font-bold">AI Mentor</h3>
+                        <p class="mt-4 text-mist leading-7">Context-aware AI helps you understand briefs, plan tasks, review deliverables, and keep improving without getting stuck.</p>
+                    </article>
+                    <article class="feature-card reveal rounded-2xl p-8 transition" style="transition-delay:100ms;">
+                        <div class="icon-box mb-7 flex h-12 w-12 items-center justify-center rounded-xl text-2xl">▱</div>
+                        <h3 class="font-display text-3xl font-bold">Smart Projects</h3>
+                        <p class="mt-4 text-mist leading-7">Auto-organized milestones, tasks, timelines, and role-based responsibilities keep every team moving toward launch.</p>
+                    </article>
+                    <article class="feature-card reveal rounded-2xl p-8 transition" style="transition-delay:200ms;">
+                        <div class="icon-box mb-7 flex h-12 w-12 items-center justify-center rounded-xl text-2xl">◈</div>
+                        <h3 class="font-display text-3xl font-bold">Portfolio Proof</h3>
+                        <p class="mt-4 text-mist leading-7">Every project becomes a case study with decisions, progress, links, screenshots, and measurable outcomes recruiters can trust.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="px-6 lg:px-12 py-20">
+            <div class="max-w-6xl mx-auto grid lg:grid-cols-[.95fr_1.05fr] gap-8 items-stretch">
+                <div class="feature-card reveal rounded-2xl p-8 lg:p-10">
+                    <p class="text-cyan uppercase tracking-[.3em] text-xs font-semibold mb-4">About LWT</p>
+                    <h2 class="font-display text-4xl sm:text-5xl font-bold leading-tight">A waiting-list project hub for builders who want proof, not just practice.</h2>
+                    <p class="mt-6 text-mist leading-8">Early members will see curated project details, select the type of work they want to build, collaborate with a focused team, and use AI guidance to convert execution into a strong portfolio story.</p>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-5 reveal" style="transition-delay:100ms;">
+                    <div class="feature-card rounded-2xl p-6"><strong class="text-3xl text-gradient font-display">01</strong><h3 class="mt-4 font-bold text-xl">Explore project details</h3><p class="mt-2 text-sm text-mist">Understand outcomes, required skills, timeline, and what you will ship.</p></div>
+                    <div class="feature-card rounded-2xl p-6"><strong class="text-3xl text-gradient font-display">02</strong><h3 class="mt-4 font-bold text-xl">Join the waitlist</h3><p class="mt-2 text-sm text-mist">Tell us your role, interest, and why you want early access.</p></div>
+                    <div class="feature-card rounded-2xl p-6"><strong class="text-3xl text-gradient font-display">03</strong><h3 class="mt-4 font-bold text-xl">Get invited</h3><p class="mt-2 text-sm text-mist">Selected users will be invited in batches as project rooms open.</p></div>
+                    <div class="feature-card rounded-2xl p-6"><strong class="text-3xl text-gradient font-display">04</strong><h3 class="mt-4 font-bold text-xl">Build publicly</h3><p class="mt-2 text-sm text-mist">Create proof-of-work assets that show how you think and execute.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="waitlist" class="px-6 lg:px-12 py-24">
+            <div class="waitlist-card reveal max-w-4xl mx-auto rounded-3xl p-6 sm:p-10 lg:p-12 text-center">
+                <p class="text-cyan uppercase tracking-[.3em] text-xs font-semibold mb-4">Get early access</p>
+                <h2 class="font-display text-4xl sm:text-6xl font-bold leading-none">Join the LWT waiting list</h2>
+                <p class="mt-5 text-mist max-w-2xl mx-auto">Leave your details and we will contact you when the next early-access group opens.</p>
+                <form class="mt-9 grid gap-4 text-left" action="mailto:build@lakshyniti.com" method="post" enctype="text/plain">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <label class="grid gap-2 text-sm font-semibold">Name<input required name="name" class="rounded-xl px-4 py-3" placeholder="Your full name"></label>
+                        <label class="grid gap-2 text-sm font-semibold">Email<input required type="email" name="email" class="rounded-xl px-4 py-3" placeholder="you@example.com"></label>
                     </div>
-                </div>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <label class="grid gap-2 text-sm font-semibold">Interested role<select name="role" class="rounded-xl px-4 py-3"><option>Student / Learner</option><option>Designer</option><option>Developer</option><option>Founder / Operator</option><option>Mentor</option></select></label>
+                        <label class="grid gap-2 text-sm font-semibold">Project interest<input name="interest" class="rounded-xl px-4 py-3" placeholder="AI, product, design, marketing..."></label>
+                    </div>
+                    <label class="grid gap-2 text-sm font-semibold">Why do you want early access?<textarea name="message" rows="4" class="rounded-xl px-4 py-3" placeholder="Tell us what you want to build with LWT."></textarea></label>
+                    <button class="btn-primary justify-self-center rounded-full px-10 py-4 font-bold transition" type="submit">Join Waiting List →</button>
+                </form>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section id="portfolio" class="py-24 px-6 lg:px-12 bg-off-white">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16 reveal"><div class="section-label mb-4 justify-center"><span>Portfolio Website</span></div><h2 class="font-heading font-bold text-3xl lg:text-5xl text-dark-text mb-6">A landing page for serious project work</h2><p class="text-mid-gray text-lg max-w-2xl mx-auto">The page mirrors LAKSHYNiTi's visual system while focusing the message on LWT's portfolio-first experience.</p></div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="brand-card portfolio-tile p-8 reveal"><div class="w-12 h-12 rounded-xl bg-deep-navy/10 flex items-center justify-center text-deep-navy text-xl font-heading font-bold mb-6">↗</div><h3 class="font-heading font-bold text-xl text-dark-text mb-3">Real briefs</h3><p class="text-mid-gray text-sm">Work on industry-inspired challenges instead of isolated assignments.</p></div>
-                <div class="brand-card portfolio-tile p-8 reveal" style="transition-delay:100ms;"><div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-blue text-xl font-heading font-bold mb-6">AI</div><h3 class="font-heading font-bold text-xl text-dark-text mb-3">Guided execution</h3><p class="text-mid-gray text-sm">Use AI support to plan, document, review, and improve each milestone.</p></div>
-                <div class="brand-card portfolio-tile p-8 reveal" style="transition-delay:200ms;"><div class="w-12 h-12 rounded-xl bg-accent-blue/10 flex items-center justify-center text-accent-blue text-xl font-heading font-bold mb-6">◎</div><h3 class="font-heading font-bold text-xl text-dark-text mb-3">Proof of work</h3><p class="text-mid-gray text-sm">Convert project progress into case studies, metrics, and a professional portfolio.</p></div>
-            </div>
+    <footer class="border-t border-white/10 px-6 lg:px-12 py-9 text-sm text-mist">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <p>© 2026 LAKSHYNiTi.</p>
+            <div class="flex items-center gap-3"><img src="../favicon_io/favicon.ico" alt="LAKSHYNiTi" class="h-5 w-5"> <span>LAKSHYNiTi LWT</span></div>
+            <div class="flex items-center gap-7"><a href="#" class="hover:text-white">Privacy</a><a href="#" class="hover:text-white">Terms</a><a href="#" class="hover:text-white">Twitter</a><a href="#" class="hover:text-white">GitHub</a></div>
         </div>
-    </section>
-
-    <section class="py-24 px-6 lg:px-12 bg-dark-text relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-brand-blue/5 to-transparent pointer-events-none"></div>
-        <div class="max-w-6xl mx-auto relative z-10">
-            <div class="grid lg:grid-cols-2 gap-8 items-center">
-                <div class="reveal"><div class="section-label text-soft-blue mb-4 justify-start"><span>How it works</span></div><h2 class="font-heading font-bold text-3xl lg:text-5xl text-white mb-6">From learning to execution to credibility.</h2><p class="text-mid-gray/80 text-lg leading-relaxed">LWT is designed as a bridge between education and industry: learn the concept, execute a practical version, collaborate like a team, and leave with something you can show.</p></div>
-                <div class="grid sm:grid-cols-2 gap-4 reveal" style="transition-delay:150ms;">
-                    <div class="dark-card metric p-6"><p class="font-heading text-4xl text-soft-blue font-bold">01</p><p class="text-white font-heading font-semibold mt-2">Project rooms</p><p class="text-mid-gray/70 text-sm">Structured spaces for brief, tasks, feedback, and delivery.</p></div>
-                    <div class="dark-card metric p-6"><p class="font-heading text-4xl text-soft-blue font-bold">02</p><p class="text-white font-heading font-semibold mt-2">Team rituals</p><p class="text-mid-gray/70 text-sm">Standups, reviews, ownership, and transparent progress.</p></div>
-                    <div class="dark-card metric p-6"><p class="font-heading text-4xl text-soft-blue font-bold">03</p><p class="text-white font-heading font-semibold mt-2">AI copilots</p><p class="text-mid-gray/70 text-sm">Planning, writing, research, and quality checks when needed.</p></div>
-                    <div class="dark-card metric p-6"><p class="font-heading text-4xl text-soft-blue font-bold">04</p><p class="text-white font-heading font-semibold mt-2">Case studies</p><p class="text-mid-gray/70 text-sm">Every finished project becomes a portfolio asset.</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="join" class="py-32 px-6 lg:px-12 bg-soft-bg relative overflow-hidden">
-        <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-brand-blue/10 blur-3xl pointer-events-none"></div>
-        <div class="max-w-3xl mx-auto text-center relative z-10 reveal">
-            <img src="../lwt.png" alt="Let's Work Together" class="w-20 h-20 mx-auto mb-6">
-            <div class="section-label mb-4 justify-center"><span>Join the Platform</span></div>
-            <h2 class="font-heading font-bold text-4xl lg:text-6xl text-dark-text mb-6">Build the portfolio your future deserves.</h2>
-            <p class="text-mid-gray text-lg mb-10">Join LWT to learn through professional execution, collaborate with ambitious builders, and create proof that speaks louder than certificates.</p>
-            <a href="mailto:build@lakshyniti.com?subject=Join%20Let's%20Work%20Together" class="btn-primary inline-flex items-center gap-2 px-10 py-4 rounded-lg font-heading font-semibold text-sm tracking-wider">Request Access <span>→</span></a>
-        </div>
-    </section>
-
-    <footer class="py-12 px-6 lg:px-12 bg-off-white border-t border-warm-gray/50"><div class="max-w-6xl mx-auto text-center"><div class="flex items-center justify-center gap-3 mb-4"><img src="../favicon_io/favicon.ico" alt="LAKSHYNiTi" class="w-8 h-8"><span class="font-heading font-bold text-lg text-dark-text">LAKSHYNiTi</span></div><p class="font-heading text-mid-gray text-sm tracking-wide mb-2">Let's Work Together · Professional Execution Platform</p><p class="text-mid-gray/50 text-xs">© 2026 LAKSHYNiTi. All rights reserved.</p></div></footer>
+    </footer>
 
     <script>
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }), observerOptions);
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => anchor.addEventListener('click', function(e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener('click', (event) => {
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    event.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
     </script>
 </body>
 </html>
