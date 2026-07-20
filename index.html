@@ -161,6 +161,69 @@
             );
             pointer-events: none;
         }
+        .signup-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: grid;
+            place-items: center;
+            padding: 1.5rem;
+            background:
+                radial-gradient(circle at 50% 35%, rgba(45, 113, 185, 0.24), transparent 38rem),
+                rgba(13, 17, 32, 0.78);
+            backdrop-filter: blur(14px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+        .signup-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .signup-panel {
+            width: min(100%, 520px);
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            border: 1px solid rgba(137, 185, 240, 0.24);
+            background:
+                linear-gradient(145deg, rgba(13, 17, 32, 0.96), rgba(26, 51, 154, 0.78)),
+                rgba(13, 17, 32, 0.92);
+            box-shadow: 0 28px 90px rgba(0, 0, 0, 0.36);
+            transform: translateY(18px) scale(0.98);
+            transition: transform 0.25s ease;
+        }
+        .signup-modal.active .signup-panel {
+            transform: translateY(0) scale(1);
+        }
+        .signup-panel::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background:
+                radial-gradient(circle at 15% 0%, rgba(137, 185, 240, 0.28), transparent 18rem),
+                radial-gradient(circle at 100% 100%, rgba(65, 146, 233, 0.24), transparent 16rem);
+            pointer-events: none;
+        }
+        .signup-input {
+            width: 100%;
+            border: 1px solid rgba(194, 222, 248, 0.22);
+            background: rgba(246, 248, 253, 0.08);
+            color: white;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+        .signup-input::placeholder {
+            color: rgba(223, 226, 231, 0.46);
+        }
+        .signup-input:focus {
+            border-color: rgba(137, 185, 240, 0.84);
+            box-shadow: 0 0 0 4px rgba(65, 146, 233, 0.16);
+            background: rgba(246, 248, 253, 0.12);
+        }
+        body.modal-open {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
@@ -509,11 +572,45 @@
             <h2 class="font-heading font-bold text-4xl lg:text-6xl text-white mb-6">The future won't be operated manually.</h2>
             <p class="text-mid-gray/80 text-lg mb-10">Be part of the shift from interaction to intelligence-driven systems.</p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="#" onclick="showSignup(); return false;" class="btn-primary px-10 py-4 rounded-lg font-heading font-semibold text-sm tracking-wider">Join Early Access</a>
+                <button type="button" onclick="showSignup()" class="btn-primary px-10 py-4 rounded-lg font-heading font-semibold text-sm tracking-wider">Join Early Access</button>
                 <a href="mailto:build@lakshyniti.com" class="btn-secondary px-10 py-4 rounded-lg font-heading font-semibold text-sm tracking-wider text-white border-white/20 hover:bg-white/5">Build With Us</a>
             </div>
         </div>
     </section>
+    <div id="signupModal" class="signup-modal" role="dialog" aria-modal="true" aria-labelledby="signupTitle" aria-hidden="true">
+        <div class="signup-panel">
+            <button type="button" onclick="hideSignup()" class="absolute top-5 right-5 z-10 w-10 h-10 rounded-full border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition-all" aria-label="Close early access form">×</button>
+            <div class="relative p-7 sm:p-9">
+                <div class="section-label text-soft-blue mb-5 justify-start">
+                    <span>Early access</span>
+                </div>
+                <h3 id="signupTitle" class="font-heading font-bold text-3xl sm:text-4xl text-white leading-tight mb-3">Join the LAKSHYNiTi intelligence list.</h3>
+                <p class="text-mid-gray/80 text-sm sm:text-base mb-7">Share your email and we’ll reach out when early access opens for builders, teams, and future-focused operators.</p>
+                <form id="signupForm" class="space-y-4">
+                    <label for="signupEmail" class="block font-heading font-semibold tracking-wider text-sm text-light-blue uppercase">Email address</label>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <input id="signupEmail" name="email" type="email" required placeholder="you@example.com" class="signup-input rounded-xl px-4 py-4 font-body text-sm">
+                        <button type="submit" class="btn-primary rounded-xl px-6 py-4 font-heading font-semibold text-sm tracking-wider whitespace-nowrap">Request Access</button>
+                    </div>
+                    <p id="signupMessage" class="min-h-6 text-sm text-soft-blue" aria-live="polite"></p>
+                </form>
+                <div class="mt-7 grid grid-cols-3 gap-3 text-center">
+                    <div class="rounded-xl border border-white/10 bg-white/5 p-3">
+                        <p class="font-heading font-bold text-white">AI-first</p>
+                        <p class="text-[11px] text-mid-gray/70">Systems</p>
+                    </div>
+                    <div class="rounded-xl border border-white/10 bg-white/5 p-3">
+                        <p class="font-heading font-bold text-white">India</p>
+                        <p class="text-[11px] text-mid-gray/70">Built</p>
+                    </div>
+                    <div class="rounded-xl border border-white/10 bg-white/5 p-3">
+                        <p class="font-heading font-bold text-white">Early</p>
+                        <p class="text-[11px] text-mid-gray/70">Access</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="py-12 px-6 lg:px-12 bg-off-white border-t border-warm-gray/50">
         <div class="max-w-6xl mx-auto text-center">
             <div class="flex items-center justify-center gap-3 mb-4">
@@ -560,14 +657,43 @@
                 if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
+        const signupModal = document.getElementById('signupModal');
+        const signupForm = document.getElementById('signupForm');
+        const signupEmail = document.getElementById('signupEmail');
+        const signupMessage = document.getElementById('signupMessage');
+
         function showSignup() {
-            const email = prompt('Enter your email to join the early access list:');
-            if (email && email.includes('@')) {
-                alert('Thank you! We\'ll contact you at ' + email + ' soon.');
-            } else if (email) {
-                alert('Please enter a valid email address.');
-            }
+            signupModal.classList.add('active');
+            signupModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+            signupMessage.textContent = '';
+            setTimeout(() => signupEmail.focus(), 120);
         }
+
+        function hideSignup() {
+            signupModal.classList.remove('active');
+            signupModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+        }
+
+        signupModal.addEventListener('click', (event) => {
+            if (event.target === signupModal) hideSignup();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && signupModal.classList.contains('active')) hideSignup();
+        });
+
+        signupForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (!signupEmail.checkValidity()) {
+                signupMessage.textContent = 'Please enter a valid email address.';
+                signupEmail.focus();
+                return;
+            }
+            signupMessage.textContent = `Thank you — we’ll contact you at ${signupEmail.value.trim()} soon.`;
+            signupForm.reset();
+        });
         const hero3d = document.getElementById('hero3d');
         if (hero3d) {
             document.addEventListener('mousemove', (e) => {
