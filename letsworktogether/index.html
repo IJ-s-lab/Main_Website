@@ -166,7 +166,7 @@
                 <p class="text-cyan uppercase tracking-[.3em] text-xs font-semibold mb-4">Get early access</p>
                 <h2 class="font-display text-4xl sm:text-6xl font-bold leading-none">Join the LWT waiting list</h2>
                 <p class="mt-5 text-mist max-w-2xl mx-auto">Leave your details and we will contact you when the next early-access group opens.</p>
-                <form class="mt-9 grid gap-4 text-left" action="mailto:build@lakshyniti.com" method="post" enctype="text/plain">
+                <form id="waitlistForm" class="mt-9 grid gap-4 text-left">
                     <div class="grid md:grid-cols-2 gap-4">
                         <label class="grid gap-2 text-sm font-semibold">Name<input required name="name" class="rounded-xl px-4 py-3" placeholder="Your full name"></label>
                         <label class="grid gap-2 text-sm font-semibold">Email<input required type="email" name="email" class="rounded-xl px-4 py-3" placeholder="you@example.com"></label>
@@ -177,6 +177,7 @@
                     </div>
                     <label class="grid gap-2 text-sm font-semibold">Why do you want early access?<textarea name="message" rows="4" class="rounded-xl px-4 py-3" placeholder="Tell us what you want to build with LWT."></textarea></label>
                     <button class="btn-primary justify-self-center rounded-full px-10 py-4 font-bold transition" type="submit">Join Waiting List →</button>
+                    <p id="waitlistMessage" class="min-h-6 text-center text-sm text-cyan" aria-live="polite"></p>
                 </form>
             </div>
         </section>
@@ -190,7 +191,27 @@
         </div>
     </footer>
 
-    <script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+        import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBMheEPPdp3gZ-Qfr1fgnGbLph9omfpN64",
+            authDomain: "lwtwaitinglakshyniti.firebaseapp.com",
+            projectId: "lwtwaitinglakshyniti",
+            storageBucket: "lwtwaitinglakshyniti.firebasestorage.app",
+            messagingSenderId: "294410180572",
+            appId: "1:294410180572:web:5f600aeabf7d8ea94ca119",
+            measurementId: "G-FPHF69KME7"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        isSupported().then((supported) => {
+            if (supported) getAnalytics(app);
+        });
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
@@ -206,6 +227,45 @@
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
+        });
+
+        const waitlistForm = document.getElementById('waitlistForm');
+        const waitlistMessage = document.getElementById('waitlistMessage');
+
+        waitlistForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            if (!waitlistForm.checkValidity()) {
+                waitlistMessage.textContent = 'Please complete the required fields.';
+                waitlistForm.reportValidity();
+                return;
+            }
+
+            const submitButton = waitlistForm.querySelector('button[type="submit"]');
+            const formData = new FormData(waitlistForm);
+            const payload = {
+                name: formData.get('name')?.toString().trim(),
+                email: formData.get('email')?.toString().trim(),
+                role: formData.get('role')?.toString(),
+                interest: formData.get('interest')?.toString().trim(),
+                message: formData.get('message')?.toString().trim(),
+                source: 'lets-work-together-waitlist',
+                page: window.location.pathname,
+                createdAt: serverTimestamp()
+            };
+
+            submitButton.disabled = true;
+            waitlistMessage.textContent = 'Saving your waitlist request...';
+
+            try {
+                await addDoc(collection(db, 'lwtWaitlist'), payload);
+                waitlistMessage.textContent = 'Thank you — your LWT waitlist request has been saved.';
+                waitlistForm.reset();
+            } catch (error) {
+                console.error('Firebase waitlist submission failed:', error);
+                waitlistMessage.textContent = 'Something went wrong. Please try again in a moment.';
+            } finally {
+                submitButton.disabled = false;
+            }
         });
     </script>
 </body>

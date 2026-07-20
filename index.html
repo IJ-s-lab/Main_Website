@@ -622,7 +622,27 @@
         </div>
     </footer>
 
-    <script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+        import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBMheEPPdp3gZ-Qfr1fgnGbLph9omfpN64",
+            authDomain: "lwtwaitinglakshyniti.firebaseapp.com",
+            projectId: "lwtwaitinglakshyniti",
+            storageBucket: "lwtwaitinglakshyniti.firebasestorage.app",
+            messagingSenderId: "294410180572",
+            appId: "1:294410180572:web:5f600aeabf7d8ea94ca119",
+            measurementId: "G-FPHF69KME7"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        isSupported().then((supported) => {
+            if (supported) getAnalytics(app);
+        });
+
         const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -684,15 +704,34 @@
             if (event.key === 'Escape' && signupModal.classList.contains('active')) hideSignup();
         });
 
-        signupForm.addEventListener('submit', (event) => {
+        signupForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             if (!signupEmail.checkValidity()) {
                 signupMessage.textContent = 'Please enter a valid email address.';
                 signupEmail.focus();
                 return;
             }
-            signupMessage.textContent = `Thank you — we’ll contact you at ${signupEmail.value.trim()} soon.`;
-            signupForm.reset();
+
+            const submitButton = signupForm.querySelector('button[type="submit"]');
+            const email = signupEmail.value.trim();
+            submitButton.disabled = true;
+            signupMessage.textContent = 'Saving your request...';
+
+            try {
+                await addDoc(collection(db, 'lakshynitiEarlyAccess'), {
+                    email,
+                    source: 'lakshyniti-homepage',
+                    page: window.location.pathname,
+                    createdAt: serverTimestamp()
+                });
+                signupMessage.textContent = `Thank you — we’ll contact you at ${email} soon.`;
+                signupForm.reset();
+            } catch (error) {
+                console.error('Firebase signup submission failed:', error);
+                signupMessage.textContent = 'Something went wrong. Please try again in a moment.';
+            } finally {
+                submitButton.disabled = false;
+            }
         });
         const hero3d = document.getElementById('hero3d');
         if (hero3d) {
