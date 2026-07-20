@@ -11,7 +11,7 @@
     <link rel="manifest" href="../favicon_io/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -27,19 +27,24 @@
                         pearl: '#F0F4FF'
                     },
                     fontFamily: {
-                        display: ['Cormorant Garamond', 'serif'],
-                        body: ['Inter', 'sans-serif']
+                        display: ['Geist', 'sans-serif'],
+                        body: ['Geist', 'sans-serif'],
+                        mono: ['Geist Mono', 'monospace']
                     }
                 }
             }
         }
     </script>
     <style>
+        :root {
+            --font-geist-sans: 'Geist', sans-serif;
+            --font-geist-mono: 'Geist Mono', monospace;
+        }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
             min-height: 100vh;
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-geist-sans);
             color: #F0F4FF;
             background:
                 radial-gradient(circle at 50% 2%, rgba(4, 123, 255, .18), transparent 26rem),
@@ -55,7 +60,8 @@
             background-size: 72px 72px;
             mask-image: linear-gradient(to bottom, black, transparent 78%);
         }
-        .font-display { font-family: 'Cormorant Garamond', serif; }
+        .font-display { font-family: var(--font-geist-sans); }
+        .font-mono { font-family: var(--font-geist-mono); }
         .glass-nav { background: rgba(2, 5, 19, .78); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(174, 182, 200, .14); }
         .brand-pill { background: linear-gradient(135deg, #047BFF, #12D8C2); box-shadow: 0 12px 32px rgba(4, 123, 255, .25); }
         .btn-primary { background: linear-gradient(135deg, #047BFF 0%, #12D8C2 100%); box-shadow: 0 18px 42px rgba(4, 123, 255, .28); }
